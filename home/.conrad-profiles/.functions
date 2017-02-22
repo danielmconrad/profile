@@ -1,5 +1,19 @@
 function conrad_install (){
+  conrad_install_homebrew
+  conrad_install_node
+  conrad_install_git
+}
+
+function conrad_install_homebrew (){
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+}
+
+function conrad_install_node (){
   brew install nvm
-  nvm install 6 && nvm alias default 6
+  nvm install 6
+  nvm alias default 6
+}
+
+function conrad_install_git (){
+  brew install git
 }
