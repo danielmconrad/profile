@@ -1,0 +1,9 @@
+source ./conrad-profiles/.dashes
+
+export PATH="./node_modules/.bin:$PATH"
+
+if [ -d $(brew --prefix)/etc/bash_completion.d ]; then
+  for bcfile in $(brew --prefix)/etc/bash_completion.d/* ; do
+    . $bcfile
+  done
+fi

@@ -1,0 +1,31 @@
+fill="--- "
+reset_style='\[\033[00m\]'
+status_style=$reset_style'\[\033[0;90m\]'
+prompt_style=$reset_style
+command_style=$reset_style'\[\033[1;29m\]'
+
+PS1="$status_style"'$fill \t\n'"$prompt_style"'${debian_chroot:+($debian_chroot)}\u@\h:\w\$'"$command_style "
+
+trap 'echo -ne "\033[00m"' DEBUG
+
+function prompt_command {
+  let fillsize=${COLUMNS}-9
+  fill=""
+
+  while [ "$fillsize" -gt "0" ]
+  do
+    fill="-${fill}"
+    let fillsize=${fillsize}-1
+  done
+
+  case "$TERM" in
+    xterm*|rxvt*)
+      bname=`basename "${PWD/$HOME/~}"`
+      echo -ne "\033]0;${bname}: ${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"
+    ;;
+    *)
+    ;;
+  esac
+}
+
+PROMPT_COMMAND=prompt_command
