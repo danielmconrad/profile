@@ -1,3 +1,4 @@
+source .conrad-profiles/.functions
 source .conrad-profiles/.dashes
 source .conrad-profiles/.aliases
 

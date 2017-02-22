@@ -1,0 +1,5 @@
+function conrad_install (){
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  brew install nvm
+  nvm install 6 && nvm alias default 6
+}
