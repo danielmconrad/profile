@@ -1,11 +1,16 @@
 function conrad_install (){
   conrad_install_homebrew
-  conrad_install_node
   conrad_install_git
+  conrad_install_node
+  conrad_install_ruby
 }
 
 function conrad_install_homebrew (){
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+}
+
+function conrad_install_git (){
+  brew install git
 }
 
 function conrad_install_node (){
@@ -14,6 +19,9 @@ function conrad_install_node (){
   nvm alias default 6
 }
 
-function conrad_install_git (){
-  brew install git
+function conrad_install_ruby (){
+  brew install rbenv ruby-build
+  rbenv install 2.4.0
+  rbenv global 2.4.0
+  gem install bundler foreman gemfury gem-release git_remote_branch git-smart httparty homesick papertrail pry terminal-table travis --no-ri --no-rdoc
 }
