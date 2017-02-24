@@ -1,2 +1,4 @@
-alias or-remaster="git stash && git fetch origin && git checkout master && git reset --hard origin/master && git remote prune origin"
-alias up-remaster="git stash && git fetch upstream && git checkout master && git reset --hard upstream/master && git remote prune upstream && git remote prune origin"
+#!/bin/bash
+
+alias ormaster="git stash && git fetch origin && git checkout master && git reset --hard origin/master && git remote prune origin"
+alias upmaster="git stash && git fetch upstream && git checkout master && git reset --hard upstream/master && git remote prune upstream && git remote prune origin"

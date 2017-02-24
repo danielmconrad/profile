@@ -2,14 +2,15 @@ Custom shell profile, delivered as a [homesick](https://github.com/technicalpick
 
 ## Prerequisites
 
-You'll need either a `.bash_profile` or `.zshenv` in your `$HOME` folder to allow for proper linking.
+You'll need one of the following in your `$HOME` folder to allow for proper linking:
+- `.bash_profile`
+- `.bashrc`
+- `.zshenv`
 
-    gem install homesick
 
-## Getting Started
+## Installation
 
-    homesick clone -f danmconrad/profile
-    homesick link profile
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/scripts/install)"
 
 ## Updating
 
