@@ -18,13 +18,19 @@ function install_git() {
 
 function install_node() {
   brew install nvm
+  
+  export NVM_DIR="$HOME/.nvm"
+  . "/usr/local/opt/nvm/nvm.sh"
+  
   nvm install 6
   nvm alias default 6
 }
 
 function install_ruby() {
   brew install rbenv ruby-build
-  rbenv init
+  
+  eval "$(rbenv init -)"
+  
   rbenv install 2.4.0
   rbenv global 2.4.0
   gem install bundler foreman gemfury gem-release git_remote_branch git-smart httparty homesick papertrail pry terminal-table travis --no-ri --no-rdoc
