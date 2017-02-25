@@ -3,10 +3,16 @@ source .conrad-profiles/.dashes
 source .conrad-profiles/.aliases
 
 export PATH="$PATH:/usr/local/sbin"
-export PATH="./node_modules/.bin:$PATH"
+export PATH="$PATH:/usr/local/bin"
 
+# Node
+export PATH="$PATH:./node_modules/.bin"
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
+
+# Ruby
+eval "$(rbenv init -)"
+
 
 if [ -d $(brew --prefix)/etc/bash_completion.d ]; then
   for bcfile in $(brew --prefix)/etc/bash_completion.d/* ; do
