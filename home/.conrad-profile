@@ -21,3 +21,4 @@ if [ -d $(brew --prefix)/etc/bash_completion.d ]; then
     . $bcfile
   done
 fi
+

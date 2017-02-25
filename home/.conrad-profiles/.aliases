@@ -1,4 +1,12 @@
 #!/bin/bash
 
+# Git
 alias ormaster="git stash && git fetch origin && git checkout master && git reset --hard origin/master && git remote prune origin"
 alias upmaster="git stash && git fetch upstream && git checkout master && git reset --hard upstream/master && git remote prune upstream && git remote prune origin"
+
+# Editors
+# if hash subl 2>/dev/null; then
+#   gdate "$@"
+# fi
+
+export EDITOR=subl
