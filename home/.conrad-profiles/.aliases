@@ -10,3 +10,5 @@ alias upmaster="git stash && git fetch upstream && git checkout master && git re
 # fi
 
 export EDITOR=subl
+
+alias himac="echo 'macattack'"
