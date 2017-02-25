@@ -1,4 +1,4 @@
-possible_filenames = [".zshrc", ".bash_profile", ".bashrc"]
+possible_filenames = [".zshrc", ".zshenv", ".bash_profile", ".bashrc"]
 
 for filename in possible_filenames
   full_path = "#{ENV['HOME']}/#{filename}"
