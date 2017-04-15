@@ -6,6 +6,7 @@ function main (){
   install_homebrew
   install_git
   install_sublime
+  install_spectacle
   install_node
   install_ruby
   install_profile
@@ -21,6 +22,10 @@ install_git() {
 
 install_sublime() {
   brew install Caskroom/cask/sublime-text
+}
+
+install_spectacle() {
+  brew install Caskroom/cask/spectacle
 }
 
 install_node() {
