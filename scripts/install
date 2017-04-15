@@ -5,20 +5,25 @@ function main (){
   
   install_homebrew
   install_git
+  install_sublime
   install_node
   install_ruby
   install_profile
 }
 
-function install_homebrew() {
+install_homebrew() {
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
-function install_git() {
+install_git() {
   brew install git
 }
 
-function install_node() {
+install_sublime() {
+  brew install Caskroom/cask/sublime-text
+}
+
+install_node() {
   brew install nvm
   
   export NVM_DIR="$HOME/.nvm"
@@ -28,7 +33,7 @@ function install_node() {
   nvm alias default 6
 }
 
-function install_ruby() {
+install_ruby() {
   brew install rbenv ruby-build
   
   eval "$(rbenv init -)"
@@ -38,7 +43,7 @@ function install_ruby() {
   gem install bundler foreman gemfury gem-release git_remote_branch git-smart httparty homesick papertrail pry terminal-table travis --no-ri --no-rdoc
 }
 
-function install_profile() {
+install_profile() {
   homesick clone -f git@github.com:danmconrad/profile.git
   homesick link profile
 }
