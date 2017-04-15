@@ -37,7 +37,7 @@ function install_ruby() {
 }
 
 function install_profile() {
-  homesick clone -f danmconrad/profile
+  homesick clone -f git@github.com:danmconrad/profile.git
   homesick link profile
 }
 
