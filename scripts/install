@@ -1,6 +1,8 @@
 #!/bin/bash
 
 function main (){
+  touch ~/.bash_profile
+  
   install_homebrew
   install_git
   install_node
