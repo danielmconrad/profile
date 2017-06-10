@@ -12,4 +12,6 @@ alias con-reupstream="git stash && git fetch upstream && git checkout master && 
 #   gdate "$@"
 # fi
 
-alias ssh-marv="ssh pi@marv.local -R 52698:localhost:52698"
+ssh_pi(){
+  "ssh pi@$1.local -R 52698:localhost:52698"
+}
