@@ -13,5 +13,6 @@ alias con-reupstream="git stash && git fetch upstream && git checkout master && 
 # fi
 
 ssh_pi(){
-  "ssh pi@$1.local -R 52698:localhost:52698"
+  cmd="ssh pi@$1.local -R 52698:localhost:52698"
+  $cmd
 }
