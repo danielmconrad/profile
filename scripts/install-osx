@@ -1,6 +1,6 @@
 #!/bin/bash
 
-main (){  
+main (){
   install_homebrew
   install_git
   install_node
@@ -19,22 +19,22 @@ install_git() {
 
 install_node() {
   brew install nvm
-  
+
   export NVM_DIR="$HOME/.nvm"
   . "/usr/local/opt/nvm/nvm.sh"
-  
+
   nvm install 6
   nvm alias default 6
 }
 
 install_ruby() {
   brew install rbenv ruby-build
-  
+
   eval "$(rbenv init -)"
-  
+
   rbenv install 2.4.0
   rbenv global 2.4.0
-  gem install bundler foreman gemfury gem-release git_remote_branch git-smart httparty homesick papertrail pry terminal-table travis --no-ri --no-rdoc
+  gem install bundler foreman homesick --no-ri --no-rdoc
 }
 
 install_profile() {

@@ -1,0 +1,39 @@
+#!/bin/bash
+
+main (){
+  install_git
+  install_node
+  install_ruby
+  install_profile
+}
+
+install_git() {
+  sudo apt-get install git
+}
+
+install_node() {
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+
+  nvm install 6
+  nvm alias default 6
+}
+
+install_ruby() {
+  sudo apt-get install rbenv ruby-build
+
+  eval "$(rbenv init -)"
+
+  rbenv install 2.4.0
+  rbenv global 2.4.0
+  gem install bundler foreman homesick --no-ri --no-rdoc
+
+  eval "$(rbenv init -)"
+}
+
+install_profile() {
+  touch ~/.bashrc
+  homesick clone -f git@github.com:danmconrad/profile.git
+  homesick link profile
+}
+
+main

@@ -15,7 +15,7 @@ export NVM_DIR="$HOME/.nvm"
 # Ruby
 eval "$(rbenv init -)"
 
-# Load any completion libraries
+# Mac: Load any completion libraries
 if [ -d $(brew --prefix)/etc/bash_completion.d ]; then
   for bcfile in $(brew --prefix)/etc/bash_completion.d/* ; do
     . $bcfile
