@@ -10,8 +10,8 @@ for filename in possible_filenames
 end
 
 if profile_file
-  if File.readlines(profile_file).grep(/source \.conrad-profile/).size == 0
-    File.open(profile_file, 'a') { |file| file.write("source .conrad-profile") }
+  if File.readlines(profile_file).grep(/source \$HOME\/\.conrad-profile/).size == 0
+    File.open(profile_file, 'a') { |file| file.write("source $HOME/.conrad-profile") }
     puts "The `.conrad-profile` file was sourced in your shell profile."
   else
     puts "Your shell profile already sources `.conrad-profile`."
