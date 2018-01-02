@@ -46,7 +46,7 @@ install_profile() {
 install_apps() {
   brew install Caskroom/cask/google-chrome
   brew install Caskroom/cask/sublime-text
-  brew install Caskroom/cask/spectacle
+  # brew install Caskroom/cask/spectacle
   brew install Caskroom/cask/iterm2
 }
 
