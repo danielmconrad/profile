@@ -5,6 +5,7 @@ main (){
   install_git
   install_node
   install_ruby
+  install_go
   install_profile
   #install_apps
 }
@@ -35,6 +36,10 @@ install_ruby() {
   rbenv install 2.4.0
   rbenv global 2.4.0
   gem install bundler foreman homesick --no-ri --no-rdoc
+}
+
+install_go() {
+  brew install go
 }
 
 install_profile() {
