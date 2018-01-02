@@ -6,7 +6,7 @@ main (){
   install_node
   install_ruby
   install_profile
-  install_apps
+  #install_apps
 }
 
 install_homebrew() {
