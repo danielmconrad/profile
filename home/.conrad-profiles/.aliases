@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # General
-alias con-profileedit="atom ~/.bash_profile"
-alias con-rcedit="atom ~/.bashrc"
+alias con-profileedit="code ~/.bash_profile"
+alias con-rcedit="code ~/.bashrc"
 
 # Git
 alias con-reorigin="git stash && git fetch origin && git checkout master && git reset --hard origin/master && git remote prune origin"
