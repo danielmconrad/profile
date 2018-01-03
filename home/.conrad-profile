@@ -18,6 +18,10 @@ fi
 # Ruby
 eval "$(rbenv init -)"
 
+# Go
+export GOPATH="$HOME/go"
+PATH="$GOPATH/bin:$PATH"
+
 # Mac: Load any completion libraries
 if [ "$(uname)" == "Darwin" ]; then
   if [ -d $(brew --prefix)/etc/bash_completion.d ]; then
@@ -26,3 +30,6 @@ if [ "$(uname)" == "Darwin" ]; then
     done
   fi
 fi
+
+# VS Code
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
