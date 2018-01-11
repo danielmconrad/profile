@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 main (){
   install_homebrew
   install_git
@@ -49,7 +51,9 @@ install_profile() {
 }
 
 install_apps() {
+  brew install vim
   brew install Caskroom/cask/google-chrome
+  brew install caskroom/cask/atom
   brew install caskroom/cask/visual-studio-code
   brew install Caskroom/cask/spectacle
   brew install Caskroom/cask/iterm2
