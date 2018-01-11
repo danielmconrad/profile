@@ -3,6 +3,9 @@
 source .conrad-profiles/.dashes
 source .conrad-profiles/.aliases
 
+# Editor
+export EDITOR="vim"
+
 # Basic binary paths
 export PATH="$PATH:/usr/local/sbin"
 export PATH="$PATH:/usr/local/bin"
@@ -20,7 +23,7 @@ eval "$(rbenv init -)"
 
 # Go
 export GOPATH="$HOME/go"
-PATH="$GOPATH/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
 
 # Mac: Load any completion libraries
 if [ "$(uname)" == "Darwin" ]; then
@@ -30,7 +33,3 @@ if [ "$(uname)" == "Darwin" ]; then
     done
   fi
 fi
-
-# VS Code
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-export EDITOR="code"
