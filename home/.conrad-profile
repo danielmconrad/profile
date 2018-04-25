@@ -22,7 +22,9 @@ fi
 eval "$(rbenv init -)"
 
 # Go
+export GOROOT=$(brew --prefix)/opt/go/libexec
 export GOPATH="$HOME/go"
+export PATH="$PATH:$GOROOT/bin"
 export PATH="$PATH:$GOPATH/bin"
 
 # Mac: Load any completion libraries
