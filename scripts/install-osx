@@ -3,7 +3,7 @@
 set -e
 
 YELLOw='\033[1;33m'
-LIGHTGREY='\033[0;37m'
+BLUE='\033[0;34m'
 NC='\033[0m'
 
 main (){
@@ -21,6 +21,7 @@ install_homebrew() {
 }
 
 install_profile() {
+  installing "Homeshick"
   brew install homeshick
   homeshick clone -f -b git@github.com:danmconrad/profile.git
   homeshick link profile
@@ -89,7 +90,7 @@ installing() {
   printf "${YELLOw}[PROFILE]${NC} $1\n"
 }
 log() {
-  printf "${LIGHTGREY}[PROFILE]${NC} $1\n"
+  printf "${BLUE}[PROFILE]${NC} $1\n"
 }
 
 main
