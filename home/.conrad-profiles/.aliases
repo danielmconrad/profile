@@ -1,19 +1,25 @@
 #!/bin/bash
 
 # General
-alias con-profileedit="code ~/.bash_profile"
-alias con-rcedit="code ~/.bashrc"
+alias con-profileedit="code $HOME/.bash_profile"
+alias con-rcedit="code $HOME/.bashrc"
 
 # Git
 alias con-reorigin="git stash && git fetch origin && git checkout master && git reset --hard origin/master && git remote prune origin"
 alias con-reupstream="git stash && git fetch upstream && git checkout master && git reset --hard upstream/master && git remote prune upstream && git remote prune origin"
 
-# Editors
-# if hash subl 2>/dev/null; then
-#   gdate "$@"
-# fi
+# Apps
+alias code='open $@ -a "Visual Studio Code"'
 
-ssh_pi(){
-  cmd="ssh pi@$1.local -R 52698:localhost:52698"
-  $cmd
+# Go
+cd-go (){
+  if [[ $1 != "" ]]; then
+    cd $(find $GOPATH/src -type d -name $1)
+  else
+    cd "$GOPATH/src"
+  fi
+}
+
+go-test-one(){
+  GO_ENV=test go test -test.v $1 -run $2
 }

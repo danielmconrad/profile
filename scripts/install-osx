@@ -2,35 +2,55 @@
 
 set -e
 
+YELLOw='\033[1;33m'
+LIGHTGREY='\033[0;37m'
+NC='\033[0m'
+
 main (){
-  install_homebrew
-  install_git
-  install_node
-  install_ruby
-  install_go
+  # install_homebrew
   install_profile
-  install_apps
+  # install_git
+  # install_node
+  # install_ruby
+  # install_go
+  # install_apps
 }
 
 install_homebrew() {
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
+install_profile() {
+  brew install homeshick
+  homeshick clone -f -b git@github.com:danmconrad/profile.git
+  homeshick link profile
+
+  if grep -q ".conrad-profile" "$HOME/.bash_profile"; then
+    log "Bash Profile already sources .conrad-profile"
+  else
+    log "Sourcing .conrad-profile in .bash_profile"
+    printf '\nsource "$HOME/.conrad-profile"' >> $HOME/.bash_profile
+  fi
+}
+
 install_git() {
+  installing "Git"
   brew install git
 }
 
 install_node() {
+  installing "Node"
   brew install nvm
 
   export NVM_DIR="$HOME/.nvm"
-  . "/usr/local/opt/nvm/nvm.sh"
+  source "$(brew --prefix)/opt/nvm/nvm.sh"
 
   nvm install 8
   nvm alias default 8
 }
 
 install_ruby() {
+  installing "Ruby"
   brew install rbenv ruby-build
 
   eval "$(rbenv init -)"
@@ -41,22 +61,35 @@ install_ruby() {
 }
 
 install_go() {
+  installing "Go"
   brew install go
 }
 
-install_profile() {
-  touch ~/.bash_profile
-  homesick clone -f git@github.com:danmconrad/profile.git
-  homesick link profile
+install_apps() {
+  installing "Vim"
+  brew install vim
+
+  installing "Chrome"
+  brew install caskroom/cask/google-chrome
+
+  installing "Atom"
+  brew install caskroom/cask/atom
+
+  installing "VSCode"
+  brew install caskroom/cask/visual-studio-code
+
+  installing "Spectacle"
+  brew install caskroom/cask/spectacle
+
+  installing "iTerm"
+  brew install caskroom/cask/iterm2
 }
 
-install_apps() {
-  brew install vim
-  brew install Caskroom/cask/google-chrome
-  brew install caskroom/cask/atom
-  brew install caskroom/cask/visual-studio-code
-  brew install Caskroom/cask/spectacle
-  brew install Caskroom/cask/iterm2
+installing() {
+  echo "${YELLOw}[PROFILE]${NC} $1"
+}
+log() {
+  echo "${LIGHTGREY}[PROFILE]${NC} $1"
 }
 
 main

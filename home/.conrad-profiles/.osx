@@ -1,0 +1,32 @@
+#!/bin/bash
+
+if [ "$(uname)" == "Darwin" ]; then
+  # Basic binary paths
+  export PATH="$PATH:$(brew --prefix)/sbin"
+  export PATH="$PATH:$(brew --prefix)/bin"
+
+  # Completion libraries
+  if [ -d $(brew --prefix)/etc/bash_completion.d ]; then
+    for bcfile in $(brew --prefix)/etc/bash_completion.d/* ; do
+      . $bcfile
+    done
+  fi
+
+  # Homeshick
+  export HOMESHICK_DIR="$(brew --prefix)/opt/homeshick"
+  source "$(brew --prefix)/opt/homeshick/homeshick.sh"
+
+  # Node
+  export PATH="$PATH:./node_modules/.bin"
+  export NVM_DIR="$HOME/.nvm"
+  source "$(brew --prefix)/opt/nvm/nvm.sh"
+
+  # Ruby
+  eval "$(rbenv init -)"
+
+  # Go
+  export GOROOT=$(brew --prefix)/opt/go/libexec
+  export GOPATH="$HOME/go"
+  export PATH="$PATH:$GOROOT/bin"
+  export PATH="$PATH:$GOPATH/bin"
+fi
