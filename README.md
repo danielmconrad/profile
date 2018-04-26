@@ -1,4 +1,4 @@
-Custom shell profile, delivered as a [homesick](https://github.com/technicalpickles/homesick) _castle_.
+Custom shell profile, delivered as a [homeshick](https://github.com/andsens/homeshick) _castle_.
 
 ## MacOS X Installation
 
@@ -10,5 +10,4 @@ Custom shell profile, delivered as a [homesick](https://github.com/technicalpick
 
 ## Updating
 
-    homesick pull profile
-    homesick link profile
+    homeshick pull profile
