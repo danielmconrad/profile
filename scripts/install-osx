@@ -86,10 +86,10 @@ install_apps() {
 }
 
 installing() {
-  echo "${YELLOw}[PROFILE]${NC} $1"
+  printf "${YELLOw}[PROFILE]${NC} $1\n"
 }
 log() {
-  echo "${LIGHTGREY}[PROFILE]${NC} $1"
+  printf "${LIGHTGREY}[PROFILE]${NC} $1\n"
 }
 
 main
