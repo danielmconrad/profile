@@ -7,13 +7,13 @@ BLUE='\033[0;34m'
 NC='\033[0m'
 
 main (){
-  # install_homebrew
+  install_homebrew
   install_profile
-  # install_git
-  # install_node
-  # install_ruby
-  # install_go
-  # install_apps
+  install_git
+  install_node
+  install_ruby
+  install_go
+  install_apps
 }
 
 install_homebrew() {
