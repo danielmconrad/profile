@@ -26,6 +26,8 @@ install_profile() {
   homeshick clone -f -b git@github.com:danmconrad/profile.git
   homeshick link profile
 
+  touch ~/.bash_profile
+
   if grep -q ".conrad-profile" "$HOME/.bash_profile"; then
     log "Bash Profile already sources .conrad-profile"
   else
@@ -46,8 +48,8 @@ install_node() {
   export NVM_DIR="$HOME/.nvm"
   source "$(brew --prefix)/opt/nvm/nvm.sh"
 
-  nvm install 8
-  nvm alias default 8
+  nvm install carbon
+  nvm alias default carbon
 }
 
 install_ruby() {
