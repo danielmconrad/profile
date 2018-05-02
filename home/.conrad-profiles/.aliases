@@ -23,3 +23,8 @@ cd-go (){
 go-test-one(){
   GO_ENV=test go test -test.v $1 -run $2
 }
+
+set-git-author(){
+  git config user.name "danmconrad"
+  git config user.email "dan.m.conrad@gmail.com"
+}
