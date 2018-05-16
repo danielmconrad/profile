@@ -13,6 +13,7 @@ main (){
   install_node
   install_ruby
   install_go
+  install_python
   install_apps
 }
 
@@ -54,18 +55,23 @@ install_node() {
 
 install_ruby() {
   installing "Ruby"
-  brew install rbenv ruby-build
-
+  brew install rbenv
   eval "$(rbenv init -)"
-
-  rbenv install 2.4.1
-  rbenv global 2.4.1
-  gem install bundler foreman homesick --no-ri --no-rdoc
+  rbenv install 2.5.1
+  rbenv global 2.5.1
 }
 
 install_go() {
   installing "Go"
   brew install go
+}
+
+install_python() {
+  installing "Python"
+  brew install pyenv
+  eval "$(pyenv init -)"
+  pyenv install 3.6.5
+  pyenv global 3.6.5
 }
 
 install_apps() {
@@ -91,6 +97,7 @@ install_apps() {
 installing() {
   printf "${YELLOw}[PROFILE]${NC} $1\n"
 }
+
 log() {
   printf "${BLUE}[PROFILE]${NC} $1\n"
 }
