@@ -7,6 +7,7 @@ alias con-rcedit="code $HOME/.bashrc"
 # Git
 alias con-reorigin="git stash && git fetch origin && git checkout master && git reset --hard origin/master && git remote prune origin"
 alias con-reupstream="git stash && git fetch upstream && git checkout master && git reset --hard upstream/master && git remote prune upstream && git remote prune origin"
+alias con-delete-branches="git branch | grep -v "master" | xargs git branch -D"
 
 # Apps
 alias code='open $@ -a "Visual Studio Code"'
