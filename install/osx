@@ -15,16 +15,19 @@ main (){
   install_go
   install_python
   install_apps
+
+  installing "Finished!"
 }
 
 install_homebrew() {
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
 install_profile() {
   installing "Homeshick"
   brew install homeshick
-  homeshick clone -f -b git@github.com:danmconrad/profile.git
+  homeshick clone -f -b danmconrad/profile
   homeshick link profile
 
   touch ~/.bash_profile
@@ -49,8 +52,8 @@ install_node() {
   export NVM_DIR="$HOME/.nvm"
   source "$(brew --prefix)/opt/nvm/nvm.sh"
 
-  nvm install carbon
-  nvm alias default carbon
+  nvm install lts/carbon
+  nvm alias default lts/carbon
 }
 
 install_ruby() {
