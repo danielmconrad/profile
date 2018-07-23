@@ -95,6 +95,9 @@ install_apps() {
 
   installing "iTerm"
   brew install caskroom/cask/iterm2
+  
+  installing "Slack"
+  brew install caskroom/cask/slack
 }
 
 installing() {
