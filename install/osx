@@ -73,8 +73,8 @@ install_python() {
   installing "Python"
   brew install pyenv
   eval "$(pyenv init -)"
-  pyenv install 3.6.5
-  pyenv global 3.6.5
+  pyenv install 3.7.0
+  pyenv global 3.7.0
 }
 
 install_apps() {
