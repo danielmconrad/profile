@@ -5,6 +5,7 @@ alias con-profileedit="code $HOME/.bash_profile"
 alias con-rcedit="code $HOME/.bashrc"
 
 alias con-find-pi="sudo nmap -sP 10.0.1.1/24"
+alias con-edit-gateway="code /Users/conrad/Library/Application\ Support/UniFi/data/sites/default/config.gateway.json"
 
 perms() {
   stat -f '%A %a %N' $1
