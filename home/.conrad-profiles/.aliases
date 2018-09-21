@@ -4,6 +4,12 @@
 alias con-profileedit="code $HOME/.bash_profile"
 alias con-rcedit="code $HOME/.bashrc"
 
+alias con-find-pi="sudo nmap -sP 10.0.1.1/24"
+
+perms() {
+  stat -f '%A %a %N' $1
+}
+
 # Git
 alias con-reorigin="git stash && git fetch origin && git checkout master && git reset --hard origin/master && git remote prune origin"
 alias con-reupstream="git stash && git fetch upstream && git checkout master && git reset --hard upstream/master && git remote prune upstream && git remote prune origin"
@@ -30,6 +36,7 @@ con-git-author(){
   git config user.email "dan.m.conrad@gmail.com"
 }
 
+# Docker
 con-docker-destroy(){
   docker stop $(docker ps -a -q)
   docker rm $(docker ps -a -q)
