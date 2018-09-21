@@ -78,6 +78,9 @@ install_python() {
 }
 
 install_apps() {
+  installing "CLI Apps"
+  brew install nmap
+  
   installing "Vim"
   brew install vim
 
