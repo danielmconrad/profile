@@ -3,18 +3,22 @@
 # General
 alias con-profileedit="code $HOME/.bash_profile"
 alias con-rcedit="code $HOME/.bashrc"
+alias con-perms="stat -f '%A %a %N' $1"
 
+# Network
 alias con-find-pi="sudo nmap -sP 192.168.1.1/24"
 alias con-edit-gateway="code /Users/conrad/Library/Application\ Support/UniFi/data/sites/default/config.gateway.json"
-
-perms() {
-  stat -f '%A %a %N' $1
-}
 
 # Git
 alias con-reorigin="git stash && git fetch origin && git checkout master && git reset --hard origin/master && git remote prune origin"
 alias con-reupstream="git stash && git fetch upstream && git checkout master && git reset --hard upstream/master && git remote prune upstream && git remote prune origin"
 alias con-delete-branches="git branch | grep -v "master" | xargs git branch -D"
+alias con-tag="git tag -a v$1 -m \"v$1\""
+
+con-git-author(){
+  git config user.name "danmconrad"
+  git config user.email "dan.m.conrad@gmail.com"
+}
 
 # Apps
 alias code='open $@ -a "Visual Studio Code"'
@@ -30,11 +34,6 @@ con-cd-go (){
 
 con-go-test-one(){
   GO_ENV=test go test -test.v $1 -run $2
-}
-
-con-git-author(){
-  git config user.name "danmconrad"
-  git config user.email "dan.m.conrad@gmail.com"
 }
 
 # Docker
