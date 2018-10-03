@@ -16,8 +16,8 @@ alias con-delete-branches="git branch | grep -v "master" | xargs git branch -D"
 alias con-tag="git tag -a v$1 -m \"v$1\""
 
 con-git-author(){
-  git config user.name "danmconrad"
-  git config user.email "dan.m.conrad@gmail.com"
+  git config user.name "Dan Conrad"
+  git config user.email "danmconrad@users.noreply.github.com"
 }
 
 # Apps
