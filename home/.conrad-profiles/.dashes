@@ -6,7 +6,7 @@ status_style=$reset_style'\[\033[0;90m\]'
 prompt_style=$reset_style
 command_style=$reset_style'\[\033[1;29m\]'
 
-PS1="$status_style"'$fill \t\n'"$prompt_style"'${debian_chroot:+($debian_chroot)}\u@\h:\w\$'"$command_style "
+PS1="$status_style"'$fill \t\n'"$prompt_style"'\W\$'"$command_style "
 
 trap 'echo -ne "\033[00m"' DEBUG
 
