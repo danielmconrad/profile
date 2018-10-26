@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Usage: 
+#   wait_for_connection 5 www.google.com
+# This will attempt a connection to www.google.com every second for 5 seconds.
+wait_for_connection(){
+    max_attempts=$1
+    site=$2
+    attempt=0
+
+    printf "Waiting for connection "
+    while true; do
+        ping -c 1 $site &> /dev/null && break;
+        printf "%c" "."
+        sleep 1
+        ((attempt++))
+        if [[ $attempt -gt $max_attempts ]]; then
+            printf " Max attempts exceeded ($max_attempts).\n"
+            exit 1
+        fi
+    done
+    printf " ✓\n"
+}
