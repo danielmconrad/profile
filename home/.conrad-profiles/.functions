@@ -21,3 +21,7 @@ wait_for_connection(){
     done
     printf " ✓\n"
 }
+
+search_proc(){
+  ps aux | grep "$1"
+}
