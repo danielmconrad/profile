@@ -85,7 +85,7 @@ install_apps() {
   brew install vim
 
   installing "Chrome"
-  brew cask google-chrome
+  brew cask install google-chrome
 
   installing "Docker"
   brew cask install docker
