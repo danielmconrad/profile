@@ -85,22 +85,22 @@ install_apps() {
   brew install vim
 
   installing "Chrome"
-  brew install caskroom/cask/google-chrome
+  brew cask google-chrome
 
-  installing "Atom"
-  brew install caskroom/cask/atom
+  installing "Docker"
+  brew cask install docker
 
   installing "VSCode"
-  brew install caskroom/cask/visual-studio-code
+  brew cask install visual-studio-code
 
   installing "Spectacle"
-  brew install caskroom/cask/spectacle
+  brew cask install spectacle
 
   installing "iTerm"
-  brew install caskroom/cask/iterm2
+  brew cask install iterm2
   
   installing "Slack"
-  brew install caskroom/cask/slack
+  brew cask install slack
 }
 
 installing() {
