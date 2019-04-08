@@ -76,7 +76,7 @@ install_python() {
   install pyenv
   
   export LDFLAGS="-L$(brew --prefix)/opt/zlib/lib"
-  export CPPFLAGS="-I$(brew --prefix)opt/zlib/include"
+  export CPPFLAGS="-I$(brew --prefix)/opt/zlib/include"
   
   echo $LDFLAGS
   echo $CPPFLAGS
