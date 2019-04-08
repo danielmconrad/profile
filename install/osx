@@ -54,11 +54,7 @@ install_profile() {
 }
 
 install_node() {
-  install nvm
-  
-  export NVM_DIR="$HOME/.nvm"
-  source "$(brew --prefix)/opt/nvm/nvm.sh"
-  
+  install nvm  
   nvm install 11
   nvm alias default 11
 }
@@ -88,9 +84,9 @@ install_cask() {
 }
 
 installing() {
-  echo "================================================="
+  echo "\n================================================="
   printf "${YELLOw}[PROFILE]${NC} $1\n"
-  echo "================================================="
+  echo "=================================================\n"
 }
 
 log() {
