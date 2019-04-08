@@ -30,7 +30,7 @@ install_homebrew() {
 
 install_profile() {
   installing "Homeshick"
-  brew install homeshick
+  brew install -f homeshick
   
   rm -rf ~/.homesick/repos/profile
   
@@ -49,36 +49,34 @@ install_profile() {
 
 install_git() {
   installing "Git"
-  brew install git
+  brew install -f git
 }
 
 install_node() {
   installing "Node"
-  brew install nvm
+  brew install -f nvm
 
   export NVM_DIR="$HOME/.nvm"
   source "$(brew --prefix)/opt/nvm/nvm.sh"
 
-  nvm install current
-  nvm alias default lts/carbon
+  nvm install 11
+  nvm alias default 11
 }
 
 install_ruby() {
   installing "Ruby"
-  brew install rbenv
-  eval "$(rbenv init -)"
-  rbenv install 2.5.1
-  rbenv global 2.5.1
+  brew install -f rvm
+  
 }
 
 install_go() {
   installing "Go"
-  brew install go
+  brew install -f go
 }
 
 install_python() {
   installing "Python"
-  brew install pyenv
+  brew install -f pyenv
   eval "$(pyenv init -)"
   pyenv install 3.7.0
   pyenv global 3.7.0
@@ -86,28 +84,28 @@ install_python() {
 
 install_apps() {
   installing "CLI Apps"
-  brew install nmap
+  brew install -f nmap
   
   installing "Vim"
-  brew install vim
+  brew install -f vim
 
   installing "Chrome"
-  brew cask install google-chrome
+  brew cask install -f google-chrome
 
   installing "Docker"
-  brew cask install docker
+  brew cask install -f docker
 
   installing "VSCode"
-  brew cask install visual-studio-code
+  brew cask install -f visual-studio-code
 
   installing "Spectacle"
-  brew cask install spectacle
+  brew cask install -f spectacle
 
   installing "iTerm"
-  brew cask install iterm2
+  brew cask install -f iterm2
   
   installing "Slack"
-  brew cask install slack
+  brew cask install -f slack
 }
 
 installing() {
