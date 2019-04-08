@@ -22,7 +22,9 @@ if [ "$(uname)" == "Darwin" ]; then
   source "$(brew --prefix)/opt/nvm/nvm.sh"
 
   # Ruby
-  eval "$(rbenv init -)"
+  if command -v rbenv 1>/dev/null 2>&1; then
+    eval "$(rbenv init -)"
+  fi
 
   # Go
   export GOROOT=$(brew --prefix)/opt/go/libexec
@@ -31,6 +33,8 @@ if [ "$(uname)" == "Darwin" ]; then
   export PATH="$PATH:$GOPATH/bin"
   
   # Python
+  export LDFLAGS="-L/usr/local/opt/zlib/lib"
+  export CPPFLAGS="-I/usr/local/opt/zlib/include"
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
   if command -v pyenv 1>/dev/null 2>&1; then
