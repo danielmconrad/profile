@@ -8,15 +8,18 @@ NC='\033[0m'
 
 main (){
   install_homebrew
+  
   install_profile
+  
   install_node
   install_ruby
   install_python
-  
   install go
+  
   install git
   install nmap
   install vim
+  
   install_cask google-chrome
   install_cask docker
   install_cask visual-studio-code
