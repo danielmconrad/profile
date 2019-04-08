@@ -64,7 +64,7 @@ install_node() {
 
 install_ruby() {
   install rbenv
-  rbenv install 2.6.2
+  rbenv install -f 2.6.2
   rbenv global 2.6.2
 }
 
