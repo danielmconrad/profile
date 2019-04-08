@@ -4,6 +4,10 @@ if [ "$(uname)" == "Darwin" ]; then
   # Basic binary paths
   export PATH="$PATH:$(brew --prefix)/sbin"
   export PATH="$PATH:$(brew --prefix)/bin"
+  
+  # Zlib
+  export LDFLAGS="-L/$(brew --prefix)/opt/zlib/lib"
+  export CPPFLAGS="-I/$(brew --prefix)opt/zlib/include"
 
   # Completion libraries
   if [ -d $(brew --prefix)/etc/bash_completion.d ]; then
@@ -33,8 +37,6 @@ if [ "$(uname)" == "Darwin" ]; then
   export PATH="$PATH:$GOPATH/bin"
   
   # Python
-  export LDFLAGS="-L/usr/local/opt/zlib/lib"
-  export CPPFLAGS="-I/usr/local/opt/zlib/include"
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
   if command -v pyenv 1>/dev/null 2>&1; then
