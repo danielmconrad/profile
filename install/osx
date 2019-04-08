@@ -8,12 +8,12 @@ NC='\033[0m'
 
 main (){
   install_homebrew
-  
+ 
   install_profile
   
+  install_python
   install_node
   install_ruby
-  install_python
   install go
   
   install git
@@ -73,10 +73,11 @@ install_ruby() {
 
 install_python() {
   install zlib
+  install pyenv
+  
   export LDFLAGS="-L$(brew --prefix)/opt/zlib/lib"
   export CPPFLAGS="-I$(brew --prefix)opt/zlib/include"
-
-  install pyenv
+  
   pyenv install 3.7.0
   pyenv global 3.7.0
 }
