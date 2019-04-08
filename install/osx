@@ -1,22 +1,23 @@
 #!/bin/bash
 
 set -e
+set -x
 
 YELLOw='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
 main (){
-  install_homebrew
+  #install_homebrew
   install_profile
-  install_git
-  install_node
-  install_ruby
-  install_go
-  install_python
-  install_apps
+  #install_git
+  #install_node
+  #install_ruby
+  #install_go
+  #install_python
+  #install_apps
 
-  installing "Finished!"
+  #installing "Finished!"
 }
 
 install_homebrew() {
