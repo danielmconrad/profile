@@ -6,8 +6,8 @@ if [ "$(uname)" == "Darwin" ]; then
   export PATH="$PATH:$(brew --prefix)/bin"
   
   # Zlib
-  export LDFLAGS="-L/$(brew --prefix)/opt/zlib/lib"
-  export CPPFLAGS="-I/$(brew --prefix)opt/zlib/include"
+  export LDFLAGS="-L$(brew --prefix)/opt/zlib/lib"
+  export CPPFLAGS="-I$(brew --prefix)opt/zlib/include"
 
   # Completion libraries
   if [ -d $(brew --prefix)/etc/bash_completion.d ]; then
