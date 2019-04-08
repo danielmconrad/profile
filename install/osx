@@ -69,6 +69,10 @@ install_ruby() {
 }
 
 install_python() {
+  install zlib
+  export LDFLAGS="-L/usr/local/opt/zlib/lib"
+  export CPPFLAGS="-I/usr/local/opt/zlib/include"
+
   install pyenv
   pyenv install 3.7.0
   pyenv global 3.7.0
