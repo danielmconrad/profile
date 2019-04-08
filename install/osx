@@ -21,12 +21,19 @@ main (){
 }
 
 install_homebrew() {
+  if hash brew 2>/dev/null; then
+    return 
+  fi
+  
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
 install_profile() {
   installing "Homeshick"
   brew install homeshick
+  
+  rm -rf ~/.homesick/repos/profile
+  
   homeshick clone -f -b danmconrad/profile
   homeshick link profile
 
@@ -52,7 +59,7 @@ install_node() {
   export NVM_DIR="$HOME/.nvm"
   source "$(brew --prefix)/opt/nvm/nvm.sh"
 
-  nvm install lts/carbon
+  nvm install current
   nvm alias default lts/carbon
 }
 
@@ -104,7 +111,9 @@ install_apps() {
 }
 
 installing() {
+  echo "================================================="
   printf "${YELLOw}[PROFILE]${NC} $1\n"
+  echo "================================================="
 }
 
 log() {
