@@ -8,16 +8,24 @@ BLUE='\033[0;34m'
 NC='\033[0m'
 
 main (){
-  #install_homebrew
-  #install_profile
-  #install_git
+  install_homebrew
+  install_profile
   install_node
-  #install_ruby
-  #install_go
-  #install_python
-  #install_apps
+  install_ruby
+  install_python
+  
+  install go
+  install git
+  install nmap
+  install vim
+  install_cask google-chrome
+  install_cask docker
+  install_cask visual-studio-code
+  install_cask spectacle
+  install_cask iterm2
+  install_cask slack
 
-  #installing "Finished!"
+  installing "Finished!"
 }
 
 install_homebrew() {
@@ -29,8 +37,7 @@ install_homebrew() {
 }
 
 install_profile() {
-  installing "Homeshick"
-  brew install -f homeshick
+  install homeshick
   
   rm -rf ~/.homesick/repos/profile
   
@@ -47,65 +54,38 @@ install_profile() {
   fi
 }
 
-install_git() {
-  installing "Git"
-  brew install -f git
-}
-
 install_node() {
-  installing "Node"
-  brew uninstall nvm || echo "."
-  brew install -f nvm
+  install nvm
+  
+  export NVM_DIR="$HOME/.nvm"
+  source "$(brew --prefix)/opt/nvm/nvm.sh"
+  
   nvm install 11
   nvm alias default 11
-
-#   export NVM_DIR="$HOME/.nvm"
-#   source "$(brew --prefix)/opt/nvm/nvm.sh"
 }
 
 install_ruby() {
-  installing "Ruby"
-  brew install -f rbenv
+  install rbenv
   rbenv install 2.6.2
   rbenv global 2.6.2
 }
 
-install_go() {
-  installing "Go"
-  brew install -f go
-}
-
 install_python() {
-  installing "Python"
-  brew install -f pyenv
+  install pyenv
   pyenv install 3.7.0
   pyenv global 3.7.0
 }
 
-install_apps() {
-  installing "CLI Apps"
-  brew install -f nmap
-  
-  installing "Vim"
-  brew install -f vim
+install() {
+  installing $1
+  brew uninstall $1 || echo "$1 uninstalled"
+  brew install -f $1
+}
 
-  installing "Chrome"
-  brew cask install -f google-chrome
-
-  installing "Docker"
-  brew cask install -f docker
-
-  installing "VSCode"
-  brew cask install -f visual-studio-code
-
-  installing "Spectacle"
-  brew cask install -f spectacle
-
-  installing "iTerm"
-  brew cask install -f iterm2
-  
-  installing "Slack"
-  brew cask install -f slack
+install_cask() {
+  installing $1
+  brew cask uninstall $1 || echo "$1 uninstalled"
+  brew cask install -f $1
 }
 
 installing() {
