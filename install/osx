@@ -25,7 +25,6 @@ main (){
   install_cask google-chrome
   install_cask docker
   install_cask visual-studio-code
-  install_cask spectacle
   install_cask iterm2
   install_cask slack
   install_cask signal
@@ -33,6 +32,8 @@ main (){
   install_cask tableplus
   install_cask dashlane
   install_cask balenaetcher
+
+  install_spectacle
 
   installing "Finished!"
 }
@@ -86,6 +87,11 @@ install_python() {
   install pyenv
   pyenv install -f 3.7.0
   pyenv global 3.7.0
+}
+
+install_spectacle() {
+  install_cask spectacle
+  yes | cp -rf ~/.homesick/repos/profile/configs/spectacle/Shortcuts.json ~/Library/Application\ Support/Spectacle/Shortcuts.json
 }
 
 install() {
