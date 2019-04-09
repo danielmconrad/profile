@@ -7,6 +7,8 @@ BLUE='\033[0;34m'
 NC='\033[0m'
 
 main (){
+  set_defaults
+  
   install_homebrew
   install_profile
   install_git
@@ -34,8 +36,13 @@ main (){
   install_cask balenaetcher
   install_cask imageoptim
   install_spectacle
-
+  
   installing "Finished!"
+}
+
+set_defaults() {
+  defaults write com.apple.screencapture location ~/Downloads
+  defaults write com.apple.screencapture show-thumbnail -bool FALSE
 }
 
 install_homebrew() {
