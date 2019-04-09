@@ -9,6 +9,7 @@ NC='\033[0m'
 main (){
   install_homebrew
   install_profile
+  install_git
   
   # Languages   
   install_python
@@ -17,7 +18,6 @@ main (){
   install go
   
   # Utilities
-  install git
   install nmap
   install vim
   
@@ -32,7 +32,6 @@ main (){
   install_cask tableplus
   install_cask dashlane
   install_cask balenaetcher
-
   install_spectacle
 
   installing "Finished!"
@@ -62,6 +61,12 @@ install_profile() {
     log "Sourcing .conrad-profile in .bash_profile"
     printf '\nsource "$HOME/.conrad-profile"' >> $HOME/.bash_profile
   fi
+}
+
+install_git() {
+  install git
+  git config --global user.name "Daniel Conrad"
+  git config --global user.email daniel.m.conrad@gmail.com
 }
 
 install_node() {
