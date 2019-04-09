@@ -32,6 +32,7 @@ main (){
   install_cask tableplus
   install_cask dashlane
   install_cask balenaetcher
+  install_cask imageoptim
   install_spectacle
 
   installing "Finished!"
