@@ -7,7 +7,7 @@ BLUE='\033[0;34m'
 NC='\033[0m'
 
 main (){
-  set_defaults
+  set_macos_defaults
   
   install_homebrew
   install_profile
@@ -27,7 +27,6 @@ main (){
   install_cask google-chrome
   install_cask docker
   install_cask visual-studio-code
-  install_cask iterm2
   install_cask slack
   install_cask signal
   install_cask spotify
@@ -35,12 +34,15 @@ main (){
   install_cask dashlane
   install_cask balenaetcher
   install_cask imageoptim
+
+  # Apps with config
+  install_iterm2
   install_spectacle
   
   installing "Finished!"
 }
 
-set_defaults() {
+set_macos_defaults() {
   defaults write com.apple.screencapture location ~/Downloads
   defaults write com.apple.screencapture show-thumbnail -bool FALSE
   defaults write com.apple.dock mru-spaces -bool FALSE
@@ -106,7 +108,12 @@ install_python() {
 install_spectacle() {
   install_cask spectacle
   mkdir -p ~/Library/Application\ Support/Spectacle/
-  yes | cp -rf ~/.homesick/repos/profile/configs/spectacle/Shortcuts.json ~/Library/Application\ Support/Spectacle/Shortcuts.json
+  yes | cp -rf ~/.homesick/repos/profile/configs/iterm/Shortcuts.json ~/Library/Application\ Support/Spectacle/Shortcuts.json
+}
+
+install_iterm2() {
+  install_cask iterm2
+  yes | cp -rf ~/.homesick/repos/profile/configs/com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist
 }
 
 install() {
