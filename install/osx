@@ -108,12 +108,12 @@ install_python() {
 install_spectacle() {
   install_cask spectacle
   mkdir -p ~/Library/Application\ Support/Spectacle/
-  yes | cp -rf ~/.homesick/repos/profile/configs/iterm/Shortcuts.json ~/Library/Application\ Support/Spectacle/Shortcuts.json
+  yes | cp -rf ~/.homesick/repos/profile/configs/spectacle/Shortcuts.json ~/Library/Application\ Support/Spectacle/Shortcuts.json
 }
 
 install_iterm2() {
   install_cask iterm2
-  yes | cp -rf ~/.homesick/repos/profile/configs/com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist
+  yes | cp -rf ~/.homesick/repos/profile/configs/iterm2/com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist
 }
 
 install() {
