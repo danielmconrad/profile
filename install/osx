@@ -34,6 +34,7 @@ main (){
   install_cask dashlane
   install_cask balenaetcher
   install_cask imageoptim
+  install_cask licecap
 
   # Apps with config
   install_iterm2
