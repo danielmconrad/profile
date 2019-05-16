@@ -8,6 +8,10 @@ Custom shell profile, delivered as a [homeshick](https://github.com/andsens/home
 
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/linux)"
 
+## Pi Installation
+
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/pi)"
+
 ## Updating
 
     homeshick pull profile
