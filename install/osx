@@ -15,7 +15,7 @@ main (){
   
   # Languages   
   install_python
-  #install_node
+  install_node
   install_ruby
   install go
   
