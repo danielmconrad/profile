@@ -1,0 +1,17 @@
+{
+  "editor.minimap.enabled": false,
+  "files.exclude": {
+      "**/.git": false
+  },
+  "search.location": "panel",
+  "window.zoomLevel": 1,
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "files.insertFinalNewline": true,
+  "editor.tabSize": 2,
+  "files.trimTrailingWhitespace": true,
+  "explorer.confirmDragAndDrop": false,
+  "editor.rulers": [
+      80,
+      120
+  ]
+}

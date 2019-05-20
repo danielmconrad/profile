@@ -8,25 +8,24 @@ NC='\033[0m'
 
 main (){
   set_macos_defaults
-  
+
   install_homebrew
   install_profile
   install_git
-  
-  # Languages   
+
+  # Languages
   install_python
   install_node
   install_ruby
   install go
-  
+
   # Utilities
   install nmap
   install vim
-  
+
   # Apps
   install_cask google-chrome
   install_cask docker
-  install_cask visual-studio-code
   install_cask slack
   install_cask signal
   install_cask spotify
@@ -37,9 +36,10 @@ main (){
   install_cask licecap
 
   # Apps with config
+  install_code
   install_iterm2
   install_spectacle
-  
+
   installing "Finished!"
 }
 
@@ -51,17 +51,17 @@ set_macos_defaults() {
 
 install_homebrew() {
   if hash brew 2>/dev/null; then
-    return 
+    return
   fi
-  
+
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
 install_profile() {
   install homeshick
-  
+
   rm -rf ~/.homesick/repos/profile
-  
+
   homeshick clone -f -b danmconrad/profile
   homeshick link profile
 
@@ -82,7 +82,7 @@ install_git() {
 }
 
 install_node() {
-  install nvm  
+  install nvm
   mkdir -p ~/.nvm
   export NVM_DIR="$HOME/.nvm"
   [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
@@ -100,10 +100,15 @@ install_python() {
   install zlib
   export LDFLAGS="-L$(brew --prefix)/opt/zlib/lib"
   export CPPFLAGS="-I$(brew --prefix)/opt/zlib/include"
-  
+
   install pyenv
   pyenv install -f 3.7.0
   pyenv global 3.7.0
+}
+
+install_code() {
+  install_cask visual-studio-code
+  yes | cp -rf ~/.homesick/repos/profile/configs/code/settings.json ~/Library/Application\ Support/Code/User/settings.json
 }
 
 install_spectacle() {
@@ -130,11 +135,11 @@ install_cask() {
 }
 
 installing() {
-  echo 
+  echo
   echo "================================================="
   printf "${YELLOw}[PROFILE]${NC} $1\n"
   echo "================================================="
-  echo 
+  echo
 }
 
 log() {
