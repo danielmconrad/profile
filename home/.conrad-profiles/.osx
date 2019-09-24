@@ -4,6 +4,9 @@ if [ "$(uname)" == "Darwin" ]; then
   # Basic binary paths
   export PATH="$PATH:$(brew --prefix)/sbin"
   export PATH="$PATH:$(brew --prefix)/bin"
+
+  # Editor
+  export EDITOR="code --wait"
   
   # Zlib
   export LDFLAGS="-L$(brew --prefix)/opt/zlib/lib"
