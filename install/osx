@@ -14,10 +14,10 @@ main (){
   install_git
 
   # Languages
-  install_python
-  install_node
-  install_ruby
-  install go
+  #install_python
+  #install_node
+  #install_ruby
+  #install go
 
   # Utilities
   install nmap
