@@ -47,6 +47,7 @@ set_macos_defaults() {
   defaults write com.apple.screencapture location ~/Downloads
   defaults write com.apple.screencapture show-thumbnail -bool FALSE
   defaults write com.apple.dock mru-spaces -bool FALSE
+  defaults write com.apple.dock show-recents -bool FALSE
 }
 
 install_homebrew() {
