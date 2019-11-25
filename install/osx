@@ -44,6 +44,8 @@ main (){
 }
 
 set_macos_defaults() {
+  chsh -s /bin/bash
+  
   defaults write com.apple.screencapture location ~/Downloads
   defaults write com.apple.screencapture show-thumbnail -bool FALSE
   defaults write com.apple.dock mru-spaces -bool FALSE
