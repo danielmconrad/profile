@@ -1,27 +1,21 @@
-#!/bin/bash
+#!/bin/zsh
 
-if [ "$(uname)" == "Darwin" ]; then
+# MacOS
+if [[ "$(uname)" == "Darwin" ]]; then
   # Basic binary paths
   export PATH="$PATH:$(brew --prefix)/sbin"
   export PATH="$PATH:$(brew --prefix)/bin"
 
-  # Editor
-  export EDITOR="code --wait"
-  
   # Zlib
   export LDFLAGS="-L$(brew --prefix)/opt/zlib/lib"
   export CPPFLAGS="-I$(brew --prefix)opt/zlib/include"
 
-  # Completion libraries
-  if [ -d $(brew --prefix)/etc/bash_completion.d ]; then
-    for bcfile in $(brew --prefix)/etc/bash_completion.d/* ; do
-      . $bcfile
-    done
-  fi
-
-  # Homeshick
-  export HOMESHICK_DIR="$(brew --prefix)/opt/homeshick"
-  source "$(brew --prefix)/opt/homeshick/homeshick.sh"
+  # Python
+  # export PYENV_ROOT="$HOME/.pyenv"
+  # export PATH="$PYENV_ROOT/bin:$PATH"
+  # if command -v pyenv 1>/dev/null 2>&1; then
+  #   eval "$(pyenv init -)"
+  # fi
 
   # Node
   # export PATH="$PATH:./node_modules/.bin"
@@ -38,11 +32,4 @@ if [ "$(uname)" == "Darwin" ]; then
   # export GOPATH="$HOME/go"
   # export PATH="$PATH:$GOROOT/bin"
   # export PATH="$PATH:$GOPATH/bin"
-  
-  # Python
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-  fi
 fi

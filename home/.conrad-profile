@@ -1,9 +1,0 @@
-#!/bin/bash
-
-export EDITOR="vim"
-
-source "$HOME/.conrad-profiles/.osx"
-source "$HOME/.conrad-profiles/.dashes"
-source "$HOME/.conrad-profiles/.aliases"
-source "$HOME/.conrad-profiles/.functions"
-source "$HOME/.conrad-profiles/.makefiles"

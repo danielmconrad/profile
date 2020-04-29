@@ -1,16 +1,19 @@
-#!/bin/bash
+#!/bin/zsh
+
+# Apps
+alias code='open $@ -a "Visual Studio Code"'
 
 # General
-alias con-profileedit="code $HOME/.bash_profile"
-alias con-rcedit="code $HOME/.bashrc"
+alias con-profileedit="code $HOME/.zprofile"
+alias con-rcedit="code $HOME/.zshrc"
 alias con-perms="stat -f '%A %a %N' $1"
-
-# MacOS Specific
-alias con-restart-audio="sudo kill $(pgrep -f coreaudiod)"
 
 # Network
 alias con-find-pi="sudo nmap -sP 192.168.1.1/24"
-alias con-edit-gateway="code /Users/conrad/Library/Application\ Support/UniFi/data/sites/default/config.gateway.json"
+
+# Docker
+alias con-docker-clean='docker stop $(docker container ls -a -q) && docker system prune -a -f --volumes'
+alias con-docker-clean-unused='docker system prune --all --force --volumes'
 
 # Git
 alias con-reorigin="git stash && git fetch origin && git checkout master && git reset --hard origin/master && git remote prune origin"
@@ -24,18 +27,7 @@ con-git-author(){
   git config user.email "danmconrad@users.noreply.github.com"
 }
 
-# Apps
-alias code='open $@ -a "Visual Studio Code"'
-
-# Go
-con-cd-go (){
-  if [[ $1 != "" ]]; then
-    cd $(find $GOPATH/src -type d -name $1)
-  else
-    cd "$GOPATH/src"
-  fi
-}
-
-# Docker
-alias con-docker-clean='docker stop $(docker container ls -a -q) && docker system prune -a -f --volumes'
-alias con-docker-clean-unused='docker system prune --all --force --volumes'
+# MacOS Specific
+if [[ "$(uname)" == "Darwin" ]]; then
+  alias con-restart-audio="sudo kill $(pgrep -f coreaudiod)"
+fi

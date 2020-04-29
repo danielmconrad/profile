@@ -1,0 +1,40 @@
+#!/bin/zsh
+
+
+# Homeshick
+export HOMESHICK_DIR="$(brew --prefix)/opt/homeshick"
+source "$(brew --prefix)/opt/homeshick/homeshick.sh"
+
+# Oh My ZSH
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="amuse"
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
+
+# Git
+autoload -Uz compinit && compinit
+
+# Make
+zstyle ':completion:*:*:make:*' tag-order 'targets'
+
+# Editor
+export EDITOR="vim"
+if [[ "$(uname)" == "Darwin" ]]; then
+  export EDITOR="code --wait"
+fi
+
+# Prompt & Cursor
+setopt promptsubst
+PS1=$'%{\e(0%}${(r:$COLUMNS::q:)}%{\e(B%}'$PS1
+echo -ne '\e[5 q'
+
+# Bindings
+autoload -U select-word-style select-word-style bash
+bindkey "^[[1;9C" forward-word
+bindkey "^[[1;9D" backward-word
+bindkey "^[a" beginning-of-line
+bindkey "^[e" end-of-line
+
+# Utilities
+source "$HOME/.con/.aliases"
+source "$HOME/.con/.functions"

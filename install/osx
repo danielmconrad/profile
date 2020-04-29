@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # set -e
 
@@ -10,14 +10,15 @@ main (){
   set_macos_defaults
 
   install_homebrew
+  install_zsh
   install_profile
   install_git
 
   # Languages
-  install_python
-  #install_node
-  #install_ruby
-  #install go
+  # install_python
+  # install_node
+  # install_ruby
+  # install go
 
   # Utilities
   install nmap
@@ -44,12 +45,12 @@ main (){
 }
 
 set_macos_defaults() {
-  chsh -s /bin/bash
-  
   defaults write com.apple.screencapture location ~/Downloads
   defaults write com.apple.screencapture show-thumbnail -bool FALSE
   defaults write com.apple.dock mru-spaces -bool FALSE
   defaults write com.apple.dock show-recents -bool FALSE
+
+  xcode-select --install
 }
 
 install_homebrew() {
@@ -60,6 +61,17 @@ install_homebrew() {
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
+install_zsh() {
+  install zsh
+
+  chsh -s "$(brew --prefix)/bin/zsh"
+  exec "$(brew --prefix)/bin/zsh"
+
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  mv ~/.zshrc ~/.zshrc.oh-my-zsh-defaults
+  mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
+}
+
 install_profile() {
   install homeshick
 
@@ -68,13 +80,21 @@ install_profile() {
   homeshick clone -f -b danmconrad/profile
   homeshick link profile
 
-  touch ~/.bash_profile
+  touch ~/.zprofile
+  touch ~/.zshrc
 
-  if grep -q ".conrad-profile" "$HOME/.bash_profile"; then
-    log "Bash Profile already sources .conrad-profile"
+  if grep -q ".con-zprofile" "$HOME/.zprofile"; then
+    log ".zprofile already sources .con-zprofile"
   else
-    log "Sourcing .conrad-profile in .bash_profile"
-    printf '\nsource "$HOME/.conrad-profile"' >> $HOME/.bash_profile
+    log "Sourcing .con-zprofile in .zprofile"
+    echo 'source "$HOME/.con-zprofile"\n' | cat - "$HOME/.zprofile" > temp && mv temp "$HOME/.zprofile"
+  fi
+
+  if grep -q ".con-zshrc" "$HOME/.zshrc"; then
+    log ".zshrc already sources .con-zshrc"
+  else
+    log "Sourcing .con-zshrc in .zshrc"
+    echo 'source "$HOME/.con-zshrc"\n' | cat - "$HOME/.zshrc" > temp && mv temp "$HOME/.zshrc"
   fi
 }
 
@@ -84,30 +104,30 @@ install_git() {
   git config --global user.email daniel.m.conrad@gmail.com
 }
 
-install_node() {
-  install nvm
-  mkdir -p ~/.nvm
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
-  nvm install 11
-  nvm alias default 11
-}
+# install_node() {
+#   install nvm
+#   mkdir -p ~/.nvm
+#   export NVM_DIR="$HOME/.nvm"
+#   [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
+#   nvm install 11
+#   nvm alias default 11
+# }
 
-install_ruby() {
-  install rbenv
-  rbenv install -f 2.6.2
-  rbenv global 2.6.2
-}
+# install_ruby() {
+#   install rbenv
+#   rbenv install -f 2.6.2
+#   rbenv global 2.6.2
+# }
 
-install_python() {
-  install zlib
-  export LDFLAGS="-L$(brew --prefix)/opt/zlib/lib"
-  export CPPFLAGS="-I$(brew --prefix)/opt/zlib/include"
+# install_python() {
+#   install zlib
+#   export LDFLAGS="-L$(brew --prefix)/opt/zlib/lib"
+#   export CPPFLAGS="-I$(brew --prefix)/opt/zlib/include"
 
-  install pyenv
-  pyenv install -f 3.7.0
-  pyenv global 3.7.0
-}
+#   install pyenv
+#   pyenv install -f 3.7.0
+#   pyenv global 3.7.0
+# }
 
 install_code() {
   install_cask visual-studio-code

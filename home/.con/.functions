@@ -1,9 +1,13 @@
-#!/bin/bash
+#!/bin/zsh
 
-# Usage: 
-#   wait_for_connection 5 www.google.com
+con-search-proc(){
+  ps aux | grep "$1"
+}
+
+# Usage:
+#   con-wait-for-connection 5 www.google.com
 # This will attempt a connection to www.google.com every second for 5 seconds.
-wait_for_connection(){
+con-wait-for-connection(){
     max_attempts=$1
     site=$2
     attempt=0
@@ -20,8 +24,4 @@ wait_for_connection(){
         fi
     done
     printf " ✓\n"
-}
-
-search_proc(){
-  ps aux | grep "$1"
 }
