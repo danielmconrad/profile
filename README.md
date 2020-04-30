@@ -1,17 +1,27 @@
 Custom shell profile, delivered as a [homeshick](https://github.com/andsens/homeshick) _castle_.
 
-## MacOS X Installation
+## Installation
 
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/osx.sh)"
+### MacOS
 
-## Linux Installation
+```shell
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/osx.sh)"
+```
 
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/linux.sh)"
+### Debian Linux
 
-## Pi Installation
+```shell
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/debian.sh)"
+```
 
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/pi.sh)"
+### Raspberry Pi
+
+```shell
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/pi.sh)"
+```
 
 ## Updating
 
-    homeshick pull profile
+```shell
+homeshick pull profile
+```

@@ -58,24 +58,24 @@ install_profile() {
   install homeshick
 
   homeshick clone -f -b git@github.com:danielmconrad/profile.git
-  homeshick pull danielmconrad/profile
+  homeshick pull profile
   homeshick link profile
 
   touch ~/.zprofile
   touch ~/.zshrc
 
-  if grep -q ".con-zprofile" "$HOME/.zprofile"; then
-    log ".zprofile already sources .con-zprofile"
+  if grep -q ".con/.zprofile" "$HOME/.zprofile"; then
+    log ".zprofile already sources .con/.zprofile"
   else
-    log "Sourcing .con-zprofile in .zprofile"
-    echo 'source "$HOME/.con-zprofile"\n' | cat - "$HOME/.zprofile" > temp && mv temp "$HOME/.zprofile"
+    log "Sourcing .con/.zprofile in .zprofile"
+    echo 'source "$HOME/.con/.zprofile"\n' | cat - "$HOME/.zprofile" > temp && mv temp "$HOME/.zprofile"
   fi
 
-  if grep -q ".con-zshrc" "$HOME/.zshrc"; then
-    log ".zshrc already sources .con-zshrc"
+  if grep -q ".con/.zshrc" "$HOME/.zshrc"; then
+    log ".zshrc already sources .con/.zshrc"
   else
-    log "Sourcing .con-zshrc in .zshrc"
-    echo 'source "$HOME/.con-zshrc"\n' | cat - "$HOME/.zshrc" > temp && mv temp "$HOME/.zshrc"
+    log "Sourcing .con/.zshrc in .zshrc"
+    echo 'source "$HOME/.con/.zshrc"\n' | cat - "$HOME/.zshrc" > temp && mv temp "$HOME/.zshrc"
   fi
 }
 
