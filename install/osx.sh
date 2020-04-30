@@ -57,8 +57,8 @@ install_homebrew() {
 install_profile() {
   install homeshick
 
-  homeshick clone -f -b danmconrad/profile
-  homeshick pull danmconrad/profile
+  homeshick clone -f -b git@github.com:danielmconrad/profile.git
+  homeshick pull danielmconrad/profile
   homeshick link profile
 
   touch ~/.zprofile
