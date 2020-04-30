@@ -1,30 +1,27 @@
-#!/bin/zsh
+#!/bin/sh
 
-# set -e
+set -e
 
 YELLOw='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
 main (){
+  sudo echo ""
   set_macos_defaults
 
   install_homebrew
-  install_zsh
   install_profile
+  install_shell
   install_git
 
-  # Languages
-  # install_python
-  # install_node
-  # install_ruby
-  # install go
+  # Apps with config
+  install_code
+  install_iterm2
+  install_spectacle
 
-  # Utilities
-  install nmap
+  # Other Apps
   install vim
-
-  # Apps
   install_cask balenaetcher
   install_cask dashlane
   install_cask discord
@@ -37,11 +34,6 @@ main (){
   install_cask spotify
   install_cask tableplus
 
-  # Apps with config
-  install_code
-  install_iterm2
-  install_spectacle
-
   installing "Finished!"
 }
 
@@ -51,7 +43,7 @@ set_macos_defaults() {
   defaults write com.apple.dock mru-spaces -bool FALSE
   defaults write com.apple.dock show-recents -bool FALSE
 
-  xcode-select --install
+  echo $(xcode-select --install 2>/dev/null)
 }
 
 install_homebrew() {
@@ -62,23 +54,11 @@ install_homebrew() {
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
-install_zsh() {
-  install zsh
-
-  chsh -s "$(brew --prefix)/bin/zsh"
-  exec "$(brew --prefix)/bin/zsh"
-
-  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  mv ~/.zshrc ~/.zshrc.oh-my-zsh-defaults
-  mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
-}
-
 install_profile() {
   install homeshick
 
-  rm -rf ~/.homesick/repos/profile
-
   homeshick clone -f -b danmconrad/profile
+  homeshick pull danmconrad/profile
   homeshick link profile
 
   touch ~/.zprofile
@@ -99,36 +79,27 @@ install_profile() {
   fi
 }
 
+install_shell() {
+  install zsh
+
+  rm -rf ~/.oh-my-zsh
+
+  export RUNZSH=no
+  export CHSH=no
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+  sudo chsh -s "$(brew --prefix)/bin/zsh"
+  exec "$(brew --prefix)/bin/zsh"
+
+  mv ~/.zshrc ~/.zshrc.oh-my-zsh-defaults
+  mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
+}
+
 install_git() {
   install git
   git config --global user.name "Daniel Conrad"
   git config --global user.email daniel.m.conrad@gmail.com
 }
-
-# install_node() {
-#   install nvm
-#   mkdir -p ~/.nvm
-#   export NVM_DIR="$HOME/.nvm"
-#   [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
-#   nvm install 11
-#   nvm alias default 11
-# }
-
-# install_ruby() {
-#   install rbenv
-#   rbenv install -f 2.6.2
-#   rbenv global 2.6.2
-# }
-
-# install_python() {
-#   install zlib
-#   export LDFLAGS="-L$(brew --prefix)/opt/zlib/lib"
-#   export CPPFLAGS="-I$(brew --prefix)/opt/zlib/include"
-
-#   install pyenv
-#   pyenv install -f 3.7.0
-#   pyenv global 3.7.0
-# }
 
 install_code() {
   install_cask visual-studio-code

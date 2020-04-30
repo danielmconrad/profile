@@ -2,15 +2,15 @@ Custom shell profile, delivered as a [homeshick](https://github.com/andsens/home
 
 ## MacOS X Installation
 
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/osx)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/osx.sh)"
 
 ## Linux Installation
 
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/linux)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/linux.sh)"
 
 ## Pi Installation
 
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/pi)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/pi.sh)"
 
 ## Updating
 
