@@ -2,10 +2,10 @@ Custom shell profile, delivered as a [homeshick](https://github.com/andsens/home
 
 ## Installation
 
-### MacOS
+### macOS
 
 ```shell
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/osx.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/macos.sh)"
 ```
 
 ### Debian Linux

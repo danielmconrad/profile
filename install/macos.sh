@@ -87,6 +87,8 @@ install_shell() {
   export RUNZSH=no
   export CHSH=no
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  cd ~/.oh-my-zsh
+  git reset --hard HEAD
 
   sudo chsh -s "$(brew --prefix)/bin/zsh"
   exec "$(brew --prefix)/bin/zsh"
