@@ -55,9 +55,11 @@ install_homebrew() {
 }
 
 install_profile() {
+  echo "Removing profile"
+  rm -rf ~/.homesick/repos/profile
+
   install homeshick
 
-  rm -rf ~/.homesick/repos/profile
   homeshick clone -f -b danielmconrad/profile
   homeshick pull profile
   homeshick link profile
