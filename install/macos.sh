@@ -95,7 +95,6 @@ install_shell() {
   git reset --hard HEAD
 
   sudo chsh -s "$(brew --prefix)/bin/zsh"
-  # exec "$(brew --prefix)/bin/zsh"
 
   mv ~/.zshrc ~/.zshrc.oh-my-zsh-defaults
   mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
@@ -109,6 +108,7 @@ install_git() {
 
 install_code() {
   install_cask visual-studio-code
+  mkdir -p ~/Library/Application\ Support/Code/User/
   yes | cp -rf ~/.homesick/repos/profile/configs/code/settings.json ~/Library/Application\ Support/Code/User/settings.json
 }
 
