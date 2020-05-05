@@ -51,13 +51,13 @@ install_homebrew() {
     return
   fi
 
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 }
 
 install_profile() {
   install homeshick
 
-  homeshick clone -f -b git@github.com:danielmconrad/profile.git
+  homeshick clone -f danielmconrad/profile
   homeshick pull profile
   homeshick link profile
 
