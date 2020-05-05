@@ -9,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="amuse"
 plugins=(git ssh-agent)
 autoload -Uz compinit && compinit
-autoload -U compaudit
+# autoload -U compaudit
 
 # - Make
 zstyle ':completion:*:*:make:*' tag-order 'targets'

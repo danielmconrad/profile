@@ -22,18 +22,18 @@ main (){
   install_spectacle
 
   section "Other Apps"
-  # install vim
-  # install_cask balenaetcher
-  # install_cask dashlane
-  # install_cask discord
-  # install_cask docker
-  # install_cask google-chrome
-  # install_cask imageoptim
-  # install_cask licecap
-  # install_cask signal
-  # install_cask slack
-  # install_cask spotify
-  # install_cask tableplus
+  install vim
+  install_cask balenaetcher
+  install_cask dashlane
+  install_cask discord
+  install_cask docker
+  install_cask google-chrome
+  install_cask imageoptim
+  install_cask licecap
+  install_cask signal
+  install_cask slack
+  install_cask spotify
+  install_cask tableplus
 
   section "Clean Up"
   brew doctor
