@@ -57,7 +57,7 @@ install_homebrew() {
 install_profile() {
   install homeshick
 
-  homeshick clone -f danielmconrad/profile
+  homeshick clone -f -b danielmconrad/profile
   homeshick pull profile
   homeshick link profile
 
@@ -86,7 +86,8 @@ install_shell() {
 
   export RUNZSH=no
   export CHSH=no
-  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) 2>/dev/null"
+
   cd ~/.oh-my-zsh
   git reset --hard HEAD
 
