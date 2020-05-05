@@ -13,12 +13,12 @@ main (){
   install_homebrew
   install_profile
   install_shell
-  install_git
 
   # Apps with config
-  # install_code
-  # install_iterm2
-  # install_spectacle
+  install_git
+  install_code
+  install_iterm2
+  install_spectacle
 
   # Other Apps
   # install vim
@@ -34,7 +34,10 @@ main (){
   # install_cask spotify
   # install_cask tableplus
 
+  # Cleanup
   brew doctor
+  compaudit | xargs chmod g-w,o-w
+
   installing "Finished!"
 }
 
