@@ -52,7 +52,7 @@ install_homebrew() {
     return
   fi
 
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  CI=1 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 }
 
 install_profile() {
@@ -88,9 +88,7 @@ install_shell() {
 
   rm -rf ~/.oh-my-zsh
 
-  export RUNZSH=no
-  export CHSH=no
-  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) 2>/dev/null"
+  RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) 2>/dev/null"
 
   cd ~/.oh-my-zsh
   git reset --hard HEAD
