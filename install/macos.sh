@@ -16,12 +16,12 @@ main (){
   install_git
 
   # Apps with config
-  install_code
-  install_iterm2
-  install_spectacle
+  # install_code
+  # install_iterm2
+  # install_spectacle
 
   # Other Apps
-  install vim
+  # install vim
   # install_cask balenaetcher
   # install_cask dashlane
   # install_cask discord
