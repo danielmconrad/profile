@@ -95,7 +95,7 @@ install_shell() {
   git reset --hard HEAD
 
   sudo chsh -s "$(brew --prefix)/bin/zsh"
-  exec "$(brew --prefix)/bin/zsh"
+  # exec "$(brew --prefix)/bin/zsh"
 
   mv ~/.zshrc ~/.zshrc.oh-my-zsh-defaults
   mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
