@@ -57,6 +57,7 @@ install_homebrew() {
 install_profile() {
   install homeshick
 
+  rm -rf ~/.homeshick/repos/profile
   homeshick clone -f -b danielmconrad/profile
   homeshick pull profile
   homeshick link profile
