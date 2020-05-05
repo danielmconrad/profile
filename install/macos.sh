@@ -2,7 +2,7 @@
 
 set -e
 
-YELLOw='\033[1;33m'
+YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
@@ -139,7 +139,7 @@ install_cask() {
 section() {
   echo
   printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
-  printf "${YELLOw}[PROFILE]${NC} $1\n"
+  printf "${YELLOW}[PROFILE]${NC} $1\n"
   printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
   echo
 }
