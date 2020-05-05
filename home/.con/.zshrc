@@ -8,9 +8,8 @@ source "$(brew --prefix)/opt/homeshick/homeshick.sh"
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="amuse"
 plugins=(git ssh-agent)
-
-# - Git
 autoload -Uz compinit && compinit
+autoload -U compaudit
 
 # - Make
 zstyle ':completion:*:*:make:*' tag-order 'targets'

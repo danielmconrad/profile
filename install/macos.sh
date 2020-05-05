@@ -8,19 +8,20 @@ NC='\033[0m'
 
 main (){
   sudo echo ""
-  set_macos_defaults
 
+  section "Prerequisites"
+  set_macos_defaults
   install_homebrew
   install_profile
   install_shell
 
-  # Apps with config
+  section "Apps with Config"
   install_git
   install_code
   install_iterm2
   install_spectacle
 
-  # Other Apps
+  section "Other Apps"
   # install vim
   # install_cask balenaetcher
   # install_cask dashlane
@@ -34,11 +35,11 @@ main (){
   # install_cask spotify
   # install_cask tableplus
 
-  # Cleanup
+  section "Clean Up"
   brew doctor
-  compaudit | xargs chmod g-w,o-w
+  zsh -c "autoload -U compaudit && compaudit | xargs chmod g-w,o-w"
 
-  installing "Finished!"
+  section "Finished!"
 }
 
 set_macos_defaults() {
@@ -126,18 +127,16 @@ install_iterm2() {
 }
 
 install() {
-  installing $1
   brew uninstall $1 || echo "$1 uninstalled"
   brew install -f $1
 }
 
 install_cask() {
-  installing $1
   brew cask uninstall $1 || echo "$1 uninstalled"
   brew cask install -f $1
 }
 
-installing() {
+section() {
   echo
   printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
   printf "${YELLOw}[PROFILE]${NC} $1\n"
