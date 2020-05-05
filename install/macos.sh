@@ -22,18 +22,19 @@ main (){
 
   # Other Apps
   install vim
-  install_cask balenaetcher
-  install_cask dashlane
-  install_cask discord
-  install_cask docker
-  install_cask google-chrome
-  install_cask imageoptim
-  install_cask licecap
-  install_cask signal
-  install_cask slack
-  install_cask spotify
-  install_cask tableplus
+  # install_cask balenaetcher
+  # install_cask dashlane
+  # install_cask discord
+  # install_cask docker
+  # install_cask google-chrome
+  # install_cask imageoptim
+  # install_cask licecap
+  # install_cask signal
+  # install_cask slack
+  # install_cask spotify
+  # install_cask tableplus
 
+  brew doctor
   installing "Finished!"
 }
 
@@ -137,9 +138,9 @@ install_cask() {
 
 installing() {
   echo
-  echo "================================================="
+  printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
   printf "${YELLOw}[PROFILE]${NC} $1\n"
-  echo "================================================="
+  printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
   echo
 }
 
