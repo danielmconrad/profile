@@ -13,6 +13,7 @@ main() {
   update_everything
   install_apps
   set_restartable_config
+  start_containers
   success "Complete!"
   info "Reboot by running: sudo reboot -h now"
 }
@@ -28,9 +29,9 @@ set_base_config() {
   out=$(sudo timedatectl set-timezone $timezone)
 
   info "Setting static IP"
-  out=$(echo "interface eth0"                 | sudo cat >> /etc/dhcpcd.conf)
+  out=$(echo "interface eth0"                  | sudo cat >> /etc/dhcpcd.conf)
   out=$(echo "static ip_address=$static_ip/24" | sudo cat >> /etc/dhcpcd.conf)
-  out=$(echo "static routers=$router_ip"      | sudo cat >> /etc/dhcpcd.conf)
+  out=$(echo "static routers=$router_ip"       | sudo cat >> /etc/dhcpcd.conf)
 }
 
 update_everything() {
@@ -47,11 +48,21 @@ install_apps() {
   out=$(sudo apt-get install git -y)
 
   info "Installing docker"
-  out=$(curl -sSL https://get.docker.com | sh)
+  curl -sSL https://get.docker.com | sh
   out=$(sudo usermod -aG docker $USER)
   out=$(newgrp docker)
+}
 
-  info "Installing pi-hole"
+set_restartable_config() {
+  info "Setting hostname"
+  out=$(sudo raspi-config nonint do_hostname $hostname)
+
+  info "Setting SSH Password"
+  sudo passwd pi
+}
+
+start_containers() {
+  info "Starting pi-hole"
   out=$(mkdir -p ~/pihole)
   docker run -d --init \
     -e WEBPASSWORD="pihole" \
@@ -66,7 +77,7 @@ install_apps() {
     --name pihole \
     pihole/pihole
 
-  info "Installing unifi"
+  info "Starting unifi"
   out=$(mkdir -p ~/unifi/data && mkdir -p ~/unifi/log)
   docker run -d \
     -e PUID=1000 \
@@ -84,14 +95,6 @@ install_apps() {
     --restart unless-stopped \
     --name unifi \
     linuxserver/unifi-controller
-}
-
-set_restartable_config() {
-  info "Setting hostname"
-  out=$(sudo raspi-config nonint do_hostname $hostname)
-
-  info "Setting SSH Password"
-  sudo passwd pi
 }
 
 ask() {
