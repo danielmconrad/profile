@@ -48,7 +48,8 @@ install_apps() {
 
   info "Installing docker"
   out=$(curl -sSL https://get.docker.com | sh)
-  out=$(sudo usermod -aG docker pi)
+  out=$(sudo usermod -aG docker $USER)
+  out=$(newgrp docker)
 
   info "Installing pi-hole"
   out=$(mkdir -p ~/pihole)
