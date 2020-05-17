@@ -8,16 +8,16 @@ Custom shell profile, delivered as a [homeshick](https://github.com/andsens/home
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/macos.sh)"
 ```
 
+### ControllerPi
+
+```shell
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/controller.sh)"
+```
+
 ### Debian Linux
 
 ```shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/debian.sh)"
-```
-
-### Raspberry Pi
-
-```shell
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/danmconrad/profile/master/install/pi.sh)"
 ```
 
 ## Updating
