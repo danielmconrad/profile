@@ -48,8 +48,6 @@ set_macos_defaults() {
   defaults write com.apple.dock mru-spaces -bool FALSE
   defaults write com.apple.dock show-recents -bool FALSE
   defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool FALSE
-
-  echo $(xcode-select --install 2>/dev/null)
 }
 
 install_homebrew() {
