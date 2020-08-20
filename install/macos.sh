@@ -23,6 +23,7 @@ main (){
 
   section "Other Apps"
   install vim
+  install_cask appcleaner
   install_cask balenaetcher
   install_cask dashlane
   install_cask discord
