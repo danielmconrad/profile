@@ -1,27 +1,19 @@
 #!/bin/zsh
 
+# Searches running processes by name
+#
+# Usage:
+#   con-search-proc docker
+#
 con-search-proc(){
   ps aux | grep "$1"
 }
 
+# This will log a timestamp to the left of each line of stdout
+#
 # Usage:
-#   con-wait-for-connection 5 www.google.com
-# This will attempt a connection to www.google.com every second for 5 seconds.
-con-wait-for-connection(){
-    max_attempts=$1
-    site=$2
-    attempt=0
-
-    printf "Waiting for connection "
-    while true; do
-        ping -c 1 $site &> /dev/null && break;
-        printf "%c" "."
-        sleep 1
-        ((attempt++))
-        if [[ $attempt -gt $max_attempts ]]; then
-            printf " Max attempts exceeded ($max_attempts).\n"
-            exit 1
-        fi
-    done
-    printf " ✓\n"
+#   install-something | con-line-times
+#
+con-line-times(){
+  while read line ; do echo "$(date) | $line"; done;
 }
