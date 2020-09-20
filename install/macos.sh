@@ -11,6 +11,7 @@ main (){
 
   section "Prerequisites"
   set_macos_defaults
+  create_ssh_key
   install_homebrew
   install_profile
   install_shell
@@ -51,6 +52,17 @@ set_macos_defaults() {
   defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool FALSE
 }
 
+create_ssh_key() {
+  log "Generating a new SSH key"
+  ssh-keygen -t rsa -b 4096 -C "daniel.m.conrad@gmail.com" -f ~/.ssh/id_rsa
+  eval "$(ssh-agent -s)"
+  touch ~/.ssh/config
+  echo "Host *\n  AddKeysToAgent yes\n  UseKeychain yes\n  IdentityFile ~/.ssh/id_rsa" > ~/.ssh/config
+  ssh-add -K ~/.ssh/id_rsa
+  pbcopy < ~/.ssh/id_rsa.pub
+  log "Public ssh key copied to clipboard"
+}
+
 install_homebrew() {
   if hash brew 2>/dev/null; then
     return
@@ -60,7 +72,7 @@ install_homebrew() {
 }
 
 install_profile() {
-  echo "Removing profile"
+  log "Removing profile"
   rm -rf ~/.homesick/repos/profile
 
   install homeshick
