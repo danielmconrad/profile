@@ -144,8 +144,8 @@ install() {
 }
 
 install_cask() {
-  brew cask uninstall $1 || echo "$1 uninstalled"
-  brew cask install -f $1
+  brew uninstall --cask $1 || echo "$1 uninstalled"
+  brew install --cask -f $1
 }
 
 section() {
