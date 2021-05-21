@@ -69,6 +69,7 @@ install_homebrew() {
   fi
 
   CI=1 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"   
 }
 
 install_profile() {
