@@ -2,7 +2,7 @@
 
 # MacOS Specific
 if [[ "$(uname)" == "Darwin" ]]; then
-  eval "$(bin/brew shellenv)"
+  eval "$(brew shellenv)"
   export PATH="$PATH:$(brew --prefix)/sbin"
   export PATH="$PATH:$(brew --prefix)/bin"
 
