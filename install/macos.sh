@@ -9,9 +9,11 @@ NC='\033[0m'
 main (){
   sudo echo ""
 
+  section "Operating System"
+  configure_macos
+  configure_ssh
+  
   section "Prerequisites"
-  set_macos_defaults
-  create_ssh_key
   install_homebrew
   install_profile
   install_shell
@@ -44,7 +46,7 @@ main (){
   section "Finished!"
 }
 
-set_macos_defaults() {
+configure_macos() {
   defaults write com.apple.screencapture location ~/Downloads
   defaults write com.apple.screencapture show-thumbnail -bool FALSE
   defaults write com.apple.dock mru-spaces -bool FALSE
@@ -52,12 +54,14 @@ set_macos_defaults() {
   defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool FALSE
 }
 
-create_ssh_key() {
+configure_ssh() {
   log "Generating a new SSH key"
   ssh-keygen -t rsa -b 4096 -C "daniel.m.conrad@gmail.com" -f ~/.ssh/id_rsa
   eval "$(ssh-agent -s)"
   touch ~/.ssh/config
   echo "Host *\n  AddKeysToAgent yes\n  UseKeychain yes\n  IdentityFile ~/.ssh/id_rsa" > ~/.ssh/config
+  echo "Host github.com\n  Host github.com\n  Hostname ssh.github.com\n  Port 443" >> ~/.ssh/config
+  
   ssh-add -K ~/.ssh/id_rsa
   pbcopy < ~/.ssh/id_rsa.pub
   log "Public ssh key copied to clipboard"
