@@ -36,6 +36,7 @@ main (){
   install_cask licecap
   install_cask signal
   install_cask slack
+  install_cask soundsource
   install_cask spotify
   install_cask tableplus
 
