@@ -48,11 +48,11 @@ main (){
 }
 
 configure_macos() {
-  defaults write com.apple.screencapture location ~/Downloads
-  defaults write com.apple.screencapture show-thumbnail -bool FALSE
-  defaults write com.apple.dock mru-spaces -bool FALSE
-  defaults write com.apple.dock show-recents -bool FALSE
-  defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool FALSE
+  defaults write com.apple.screencapture "location" -string "~/Downloads" && killall SystemUIServer
+  defaults write com.apple.screencapture "show-thumbnail" -bool "false"
+  defaults write com.apple.dock "mru-spaces" -bool "false"
+  defaults write com.apple.dock "show-recents" -bool "false" && killall Dock
+  defaults write com.google.Chrome "AppleEnableSwipeNavigateWithScrolls" -bool "false"
 }
 
 configure_ssh() {
