@@ -16,19 +16,20 @@ alias con-docker-clean='docker stop $(docker container ls -a -q) && docker syste
 alias con-docker-clean-unused='docker system prune --all --force --volumes'
 
 # Git
+alias con-delete-branches="git branch | grep -v 'main\|master' | xargs git branch -D"
+alias con-git-author="git config user.name 'Daniel Conrad' && git config user.email 'daniel.m.conrad@gmail.com'"
 alias con-remain="git stash && git fetch origin && git checkout main && git reset --hard origin/main && git remote prune origin"
 alias con-reorigin="git stash && git fetch origin && git checkout master && git reset --hard origin/master && git remote prune origin"
 alias con-reupstream="git stash && git fetch upstream && git checkout master && git reset --hard upstream/master && git remote prune upstream && git remote prune origin"
-alias con-delete-branches="git branch | grep -v 'main\|master' | xargs git branch -D"
 alias con-tag="git tag -a v$1 -m \"v$1\""
 alias con-uncache="git gc --prune=now --aggressive"
 
-con-git-author(){
-  git config user.name "Dan Conrad"
-  git config user.email "danmconrad@users.noreply.github.com"
-}
-
-# MacOS Specific
+# Mac Specific
 if [[ "$(uname)" == "Darwin" ]]; then
   alias con-restart-audio="sudo kill $(pgrep -f coreaudiod)"
+fi
+
+# Linux Specific
+if [[ "$(uname)" == "Linux" ]]; then
+  alias con-sleep-display="xset dpms force standby"
 fi

@@ -9,28 +9,28 @@ NC='\033[0m'
 main (){
   sudo echo ""
 
-  section "Operating System"
-  configure_macos
-  configure_ssh
-  
-  section "Prerequisites"
-  install_homebrew
-  install_profile
-  install_shell
+  section "Package Managers"
+  install_package_managers
 
-  section "Apps with Config"
+  section "Operating System & Shell"
+  configure_os
+  configure_ssh
+  configure_shell
+  configure_profile
+
+  section "System Tools and Runtimes"
   install_git
   install_code
   install_iterm2
   install_spectacle
-
-  section "Other Apps"
   install vim
+  install_cask docker
+
+  section "Applications"
   install_cask appcleaner
   install_cask balenaetcher
   install_cask dashlane
   install_cask discord
-  install_cask docker
   install_cask google-chrome
   install_cask imageoptim
   install_cask licecap
@@ -47,7 +47,16 @@ main (){
   section "Finished!"
 }
 
-configure_macos() {
+install_package_managers() {
+  if hash brew 2>/dev/null; then
+    return
+  fi
+
+  CI=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"   
+}
+
+configure_os() {
   defaults write com.apple.screencapture "location" -string "~/Downloads" && killall SystemUIServer
   defaults write com.apple.screencapture "show-thumbnail" -bool "false"
   defaults write com.apple.dock "mru-spaces" -bool "false"
@@ -57,27 +66,33 @@ configure_macos() {
 
 configure_ssh() {
   log "Generating a new SSH key"
-  ssh-keygen -t rsa -b 4096 -C "daniel.m.conrad@gmail.com" -f ~/.ssh/id_rsa
-  eval "$(ssh-agent -s)"
   touch ~/.ssh/config
   echo "Host *\n  AddKeysToAgent yes\n  UseKeychain yes\n  IdentityFile ~/.ssh/id_rsa" > ~/.ssh/config
   echo "Host github.com\n  Host github.com\n  Hostname ssh.github.com\n  Port 443" >> ~/.ssh/config
-  
-  ssh-add -K ~/.ssh/id_rsa
-  pbcopy < ~/.ssh/id_rsa.pub
-  log "Public ssh key copied to clipboard"
+  ssh-keygen -t ed25519 -C "daniel.m.conrad@gmail.com" -f ~/.ssh/id_ed25519
+  eval "$(ssh-agent -s)"
+  ssh-add -K ~/.ssh/id_ed25519
+  pbcopy < ~/.ssh/id_ed25519.pub
+  log "Public SSH key copied to clipboard"
 }
 
-install_homebrew() {
-  if hash brew 2>/dev/null; then
-    return
-  fi
+configure_shell() {
+  install zsh
 
-  CI=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  eval "$(/opt/homebrew/bin/brew shellenv)"   
+  rm -rf ~/.oh-my-zsh
+
+  RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) 2>/dev/null"
+
+  cd ~/.oh-my-zsh
+  git reset --hard HEAD
+
+  sudo chsh -s "$(brew --prefix)/bin/zsh"
+
+  mv ~/.zshrc ~/.zshrc.oh-my-zsh-defaults
+  mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
 }
 
-install_profile() {
+configure_profile() {
   log "Removing profile"
   rm -rf ~/.homesick/repos/profile
 
@@ -103,22 +118,6 @@ install_profile() {
     log "Sourcing .con/.zshrc in .zshrc"
     echo 'source "$HOME/.con/.zshrc"\n' | cat - "$HOME/.zshrc" > temp && mv temp "$HOME/.zshrc"
   fi
-}
-
-install_shell() {
-  install zsh
-
-  rm -rf ~/.oh-my-zsh
-
-  RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) 2>/dev/null"
-
-  cd ~/.oh-my-zsh
-  git reset --hard HEAD
-
-  sudo chsh -s "$(brew --prefix)/bin/zsh"
-
-  mv ~/.zshrc ~/.zshrc.oh-my-zsh-defaults
-  mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
 }
 
 install_git() {

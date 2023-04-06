@@ -1,15 +1,16 @@
 #!/bin/zsh
 
 # Homeshick
-export HOMESHICK_DIR="$(brew --prefix)/opt/homeshick"
-source "$(brew --prefix)/opt/homeshick/homeshick.sh"
+if [[ "$(uname)" == "Darwin" ]]; then
+  export HOMESHICK_DIR="$(brew --prefix)/opt/homeshick"
+  source "$(brew --prefix)/opt/homeshick/homeshick.sh"
+fi
 
 # Oh My ZSH
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="amuse"
 plugins=(git ssh-agent)
 autoload -Uz compinit && compinit
-# autoload -U compaudit
 
 # - Make
 zstyle ':completion:*:*:make:*' tag-order 'targets'
@@ -40,4 +41,3 @@ bindkey "^[e" end-of-line
 
 # Utilities
 source "$HOME/.con/.aliases"
-source "$HOME/.con/.functions"

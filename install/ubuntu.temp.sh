@@ -3,7 +3,7 @@
 ```sh
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install git
+sudo apt-get install git make python3
 ```
 
 ## Terminal
@@ -69,6 +69,17 @@ sudo snap install chromium
 sudo snap install code --classic
 sudo snap install slack
 sudo snap install spotify
+```
+
+```sh
+sudo addgroup --system docker
+sudo gpasswd -a $USER docker 
+newgrp docker
+sudo snap install --edge docker
+```
+
+```sh
+sudo snap install node --classic
 ```
 
 # Profile
