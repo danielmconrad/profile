@@ -59,7 +59,7 @@ set_restartable_config() {
   out=$(sudo raspi-config nonint do_hostname $hostname)
 
   info "Setting SSH Password"
-  sudo passwd pi
+  sudo passwd $USER
 }
 
 start_containers() {
@@ -83,7 +83,7 @@ start_containers() {
   docker run -d \
     -e PUID=1000 \
     -e PGID=1000 \
-    -e MEM_LIMIT=512M \
+    -e MEM_LIMIT=512 \
     -p 3478:3478/udp \
     -p 10001:10001/udp \
     -p 8080:8080 \
