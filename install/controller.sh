@@ -48,7 +48,7 @@ install_apps() {
   out=$(sudo apt-get install git -y)
 
   info "Installing docker"
-  curl -sSL https://get.docker.com | sh
+  out=$(curl -sSL https://get.docker.com | sh)
   out=$(sudo usermod -aG docker $USER)
   out=$(newgrp docker)
 }
